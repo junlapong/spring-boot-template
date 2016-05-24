@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Home</h1>
+    <form action="#" th:action="@{/PaymentManager/PaymentInput.do}" th:object="${greeting}" method="post">
+    	<p>Id: <input type="text" th:field="*{id}" /></p>
+        <p>Content: <input type="text" th:field="*{content}" /></p>
+        <p>
+        	<input type="button" value="base64" onclick="test()" />
+        	<input type="submit" value="Submit" />
+        	<input type="reset" value="Reset" /></p>
+    </form>
+
+<script type="text/javascript">
+<!--
+
+function test() {
+    var raw_data = 'merchantid=950111161&ordernumber=20160110001&paymenttype=CreditCard&amount=12345.00';
+
+    //encode base64
+    var payment_data = window.btoa(raw_data);
+    
+    alert(payment_data);
+}
+
+-->
+</script>
+
+</body>
+</html>
