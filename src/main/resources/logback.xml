@@ -8,7 +8,7 @@
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern></pattern>
+            <!-- [%d{HH:mm:ss.SSS zzz}] %-5level [%t] %logger.%method\(\) - %msg%n -->
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>
             <charset>utf8</charset>
         </encoder>
