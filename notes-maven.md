@@ -1,17 +1,45 @@
 # Maven Notes
 
-## USER HOME
+## M2 HOME
 ```
 C:\Users\username\.m2
 ```
 
-## CONFIG
+## PROXY
+```xml
+<!-- C:\Users\username\.m2\settings.xml -->
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	<localRepository>D:\Java\maven_repo</localRepository>
+	<proxies>
+		<proxy>
+		  <id>Proxy</id>
+		  <active>true</active>
+		  <protocol>http</protocol>
+		  <host>localhost</host>
+		  <port>3128</port>
+<!--
+		  <host>127.0.0.1</host>
+		  <port>8080</port>
+		  <username>username</username>
+		  <password>password</password>
+-->
+		  <nonProxyHosts>localhost|*.domain.com</nonProxyHosts>
+		</proxy>
+	</proxies>
+</settings>
+```
+
+## PATH CONFIG
 ```
 MAVEN_HOME=X:\path\to\maven
 set PATH=%MAVEN_HOME%\bin;%PATH%
 ```
 
-### EXAMPLE
+### USAGE EXAMPLE
 ```
 cd \path\to\project
 mvn archetype:create -DgroupId=io.github.junlapong.myapp -DartifactId=myapp
