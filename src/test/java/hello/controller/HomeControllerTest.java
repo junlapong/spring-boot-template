@@ -1,4 +1,4 @@
-package hello;
+package hello.controller;
 
 import org.junit.Before;
 import org.junit.Ignore;

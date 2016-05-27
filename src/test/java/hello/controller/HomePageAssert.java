@@ -1,4 +1,4 @@
-package hello;
+package hello.controller;
 
 import org.assertj.core.api.AbstractAssert;
 import org.openqa.selenium.WebElement;
@@ -26,7 +26,6 @@ public class HomePageAssert extends AbstractAssert<HomePageAssert, HomePage> {
 
     private List<String> getLinkNames() {
         List<WebElement> actuatorLinks = actual.getActuatorLinks();
-        return actuatorLinks.stream()
-                            .map(WebElement::getText).collect(Collectors.toList());
+        return actuatorLinks.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 }

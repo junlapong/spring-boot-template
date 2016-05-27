@@ -53,6 +53,7 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
 
     @Override
     public void beforeTestMethod(TestContext testContext) throws Exception {
+        logger.info("testContext == {}", testContext);
         if (webDriver != null) {
             SeleniumTest annotation = findAnnotation(testContext.getTestClass(), SeleniumTest.class);
             webDriver.get(annotation.baseUrl());
@@ -61,6 +62,7 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
 
     @Override
     public void afterTestClass(TestContext testContext) throws Exception {
+        logger.info("testContext == {}", testContext);
         if (webDriver != null) {
             logger.info("quit browser");
             webDriver.quit();
@@ -69,8 +71,8 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
 
     @Override
     public void afterTestMethod(TestContext testContext) throws Exception {
-        if (testContext.getTestException() == null) {
-            logger.info("testContext == null");
+        logger.info("testContext == {}", testContext);
+        if (testContext.getTestException() != null) {
             return;
         }
 

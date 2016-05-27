@@ -1,4 +1,4 @@
-package hello;
+package hello.controller;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,6 +38,6 @@ public class HomeControllerClassicTest {
     @Test
     public void verifiesHomePageLoads() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/"))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+               .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
