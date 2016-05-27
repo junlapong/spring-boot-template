@@ -19,5 +19,5 @@ public @interface SeleniumTest {
 
     Class<? extends WebDriver> driver() default FirefoxDriver.class;
 
-    String baseUrl() default "http://localhost:9000";
+    String baseUrl() default "http://localhost:8080";
 }

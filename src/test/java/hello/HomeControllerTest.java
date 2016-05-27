@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
@@ -20,6 +22,8 @@ import selenium.SeleniumTest;
 @SeleniumTest(driver = FirefoxDriver.class, baseUrl = "http://localhost:9000")
 public class HomeControllerTest {
 
+    private static final Logger logger = LoggerFactory.getLogger(HomeControllerTest.class);
+
     @Autowired
     private WebDriver driver;
 
@@ -32,15 +36,16 @@ public class HomeControllerTest {
 
     @Test
     public void containsActuatorLinks() {
+        logger.info("hasActuatorLink ?");
         homePage.assertThat()
-                .hasActuatorLink("autoconfig", "beans", "configprops", "dump", "env", "health", "info", "metrics", "mappings", "trace")
+                .hasActuatorLink("autoconfig", "beans", "configprops", "dump"
+                      , "env", "health", "info", "metrics", "mappings", "trace")
                 .hasNoActuatorLink("shutdown");
     }
 
     @Test
     @Ignore
     public void failingTest() {
-        homePage.assertThat()
-                .hasNoActuatorLink("autoconfig");
+        homePage.assertThat().hasNoActuatorLink("autoconfig");
     }
 }

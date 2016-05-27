@@ -3,6 +3,10 @@ package selenium;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -20,6 +24,8 @@ import static selenium.support.CaseFormat.toLowerUnderscore;
 
 public class SeleniumTestExecutionListener extends AbstractTestExecutionListener {
 
+    private static final Logger logger = LoggerFactory.getLogger(SeleniumTestExecutionListener.class);
+
     private WebDriver webDriver;
 
     public int getOrder() {
@@ -28,14 +34,15 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
 
     @Override
     public void prepareTestInstance(TestContext testContext) throws Exception {
+
         if (webDriver != null) {
             return;
         }
+
         ApplicationContext context = testContext.getApplicationContext();
         if (context instanceof ConfigurableApplicationContext) {
 
-            SeleniumTest annotation = findAnnotation(
-                    testContext.getTestClass(), SeleniumTest.class);
+            SeleniumTest annotation = findAnnotation(testContext.getTestClass(), SeleniumTest.class);
             webDriver = BeanUtils.instantiate(annotation.driver());
 
             ConfigurableApplicationContext configurableApplicationContext = (ConfigurableApplicationContext) context;
@@ -47,8 +54,7 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
     @Override
     public void beforeTestMethod(TestContext testContext) throws Exception {
         if (webDriver != null) {
-            SeleniumTest annotation = findAnnotation(
-                    testContext.getTestClass(), SeleniumTest.class);
+            SeleniumTest annotation = findAnnotation(testContext.getTestClass(), SeleniumTest.class);
             webDriver.get(annotation.baseUrl());
         }
     }
@@ -56,6 +62,7 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
     @Override
     public void afterTestClass(TestContext testContext) throws Exception {
         if (webDriver != null) {
+            logger.info("quit browser");
             webDriver.quit();
         }
     }
@@ -63,6 +70,7 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
     @Override
     public void afterTestMethod(TestContext testContext) throws Exception {
         if (testContext.getTestException() == null) {
+            logger.info("testContext == null");
             return;
         }
 
@@ -70,7 +78,6 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
         String testName = toLowerUnderscore(testContext.getTestClass().getSimpleName());
         String methodName = toLowerUnderscore(testContext.getTestMethod().getName());
 
-        Files.copy(screenshot.toPath(),
-                Paths.get("screenshots", testName + "_" + methodName + "_" + screenshot.getName()));
+        Files.copy(screenshot.toPath(), Paths.get("screenshots", testName + "_" + methodName + "_" + screenshot.getName()));
     }
 }
