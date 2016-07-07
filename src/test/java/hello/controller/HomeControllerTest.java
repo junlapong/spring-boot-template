@@ -35,6 +35,7 @@ public class HomeControllerTest {
     }
 
     @Test
+    @Ignore
     public void containsActuatorLinks() {
         logger.info("hasActuatorLink ?");
         homePage.assertThat()
