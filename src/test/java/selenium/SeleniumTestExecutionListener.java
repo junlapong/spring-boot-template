@@ -1,12 +1,17 @@
 package selenium;
 
+import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
+import static selenium.support.CaseFormat.toLowerUnderscore;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -14,13 +19,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.Ordered;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
-import static selenium.support.CaseFormat.toLowerUnderscore;
 
 public class SeleniumTestExecutionListener extends AbstractTestExecutionListener {
 
@@ -32,7 +30,8 @@ public class SeleniumTestExecutionListener extends AbstractTestExecutionListener
         return Ordered.HIGHEST_PRECEDENCE;
     }
 
-    @Override
+    @SuppressWarnings("resource")
+	@Override
     public void prepareTestInstance(TestContext testContext) throws Exception {
 
         if (webDriver != null) {
