@@ -17,7 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //https.headers().cacheControl().disable();
         https.headers().frameOptions();
         //https.headers().frameOptions().sameOrigin();
-        https.headers().addHeaderWriter(new StaticHeadersWriter("X-Header", "Jman"));
+        https.headers().addHeaderWriter(new StaticHeadersWriter("X-Header", "Custom-Header"));
     }
 
 }
