@@ -7,8 +7,9 @@ Spring Boot Template
 - [Spring Boot Reference](http://docs.spring.io/spring-boot/docs/current/reference/html/)
 - [Spring Mobile Device Module](http://docs.spring.io/spring-mobile/docs/current/reference/html/device.html)
 
-## HTTPS
-https://localhost:8443/
+## Test
+ - HTTP http://localhost:8080/
+ - HTTPS https://localhost:8443/
 
 ### create keystore
 ```
