@@ -4,7 +4,8 @@ Spring Boot Template
 [![Build Status](https://travis-ci.org/junlapong/spring-boot-template.svg?branch=master)](https://travis-ci.org/junlapong/spring-boot-template)
 
 ## Reference
-http://docs.spring.io/spring-boot/docs/current/reference/html/
+- [Spring Boot Reference](http://docs.spring.io/spring-boot/docs/current/reference/html/)
+- [Spring Mobile Device Module](http://docs.spring.io/spring-mobile/docs/current/reference/html/device.html)
 
 ## HTTPS
 https://localhost:8443/

@@ -6,7 +6,7 @@
     <link rel="icon" href="/favicon.ico" th:href="@{favicon.ico}" />
 </head>
 <body>
-	<h1>Home</h1>
+	<h1>Payment Form</h1>
     <form action="#" th:action="@{/PaymentManager/PaymentInput.do}" th:object="${greeting}" method="post">
     	<p>Id: <input type="text" th:field="*{id}" /></p>
         <p>Content: <input type="text" th:field="*{content}" /></p>

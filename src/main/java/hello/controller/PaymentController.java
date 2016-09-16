@@ -11,16 +11,16 @@ import hello.domain.PaymentForm;
 @Controller
 public class PaymentController {
 
-    @RequestMapping(value="/home", method=RequestMethod.GET)
+    @RequestMapping(value="/test", method=RequestMethod.GET)
     public String home(Model model) {
         model.addAttribute("greeting", new PaymentForm());
-        return "greeting";
+        return "test";
     }
 
     @RequestMapping(value="/PaymentManager/PaymentInput.do", method=RequestMethod.POST)
     public String paymentSubmit(@ModelAttribute PaymentForm greeting, Model model) {
         model.addAttribute("greeting", greeting);
-        return "result";
+        return "test-result";
     }
 
 }

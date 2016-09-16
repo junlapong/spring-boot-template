@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head> 
+<head>
     <title>Result</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="../static/css/core.css"
@@ -37,7 +37,7 @@
 	<h1>Result</h1>
     <p th:text="'Id: ' + ${greeting.id}" />
     <p th:text="'Content: ' + ${greeting.content}" />
-    <a href="#" th:href="@{/home}" class="btn btn-large btn-success">Home</a>
+
     <footer>
         <div th:replace="fragments/footer :: footer">&copy; 2014 The Static Templates</div>
     </footer>
