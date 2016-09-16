@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head> 
-    <title>Home</title>
+<head>
+    <title>Payment Form</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="/favicon.ico" th:href="@{favicon.ico}" />
 </head>
 <body>
 	<h1>Home</h1>
@@ -10,21 +11,26 @@
     	<p>Id: <input type="text" th:field="*{id}" /></p>
         <p>Content: <input type="text" th:field="*{content}" /></p>
         <p>
-        	<input type="button" value="base64" onclick="test()" />
+        	<input type="button" value="base64" onclick="test(this.form)" />
         	<input type="submit" value="Submit" />
-        	<input type="reset" value="Reset" /></p>
-    </form>
+        	<input type="reset" value="Reset" />
+        </p>
 
+        <div class="g-recaptcha" data-sitekey="6Lem2ycTAAAAAEw2MOprSnpMlvtGebwSX5whNlSa"></div>
+
+    </form>
+<!-- https://developers.google.com/recaptcha/ -->
+<script src="https://www.google.com/recaptcha/api.js?hl=th" async="async" defer="defer"></script>
 <script type="text/javascript">
 <!--
 
-function test() {
-    var raw_data = 'merchantid=950111161&ordernumber=20160110001&paymenttype=CreditCard&amount=12345.00';
+function test(form) {
+    var raw_data = 'merchantid=950111161&ordernumber=20160110001&paymenttype=CreditCard&amount=1234.50';
 
     //encode base64
-    var payment_data = window.btoa(raw_data);
-    
-    alert(payment_data);
+    var base64_data = window.btoa(raw_data);
+    console.log(base64_data);
+    form.content.value = base64_data;
 }
 
 -->

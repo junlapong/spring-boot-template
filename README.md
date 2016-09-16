@@ -23,3 +23,9 @@ keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keyst
 
 keytool -list -v -keystore keystore-san.p12 -storetype pkcs12
 ```
+### Notes
+ - How to override version spring-boot dependencies
+```
+check version: /path/to/maven/repo/org/springframework/boot/spring-boot-dependencies/xxx.pom
+mvn dependency:tree -Dincludes=com.fasterxml.jackson.core
+```
