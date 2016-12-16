@@ -12,8 +12,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <minify-maven-plugin.version>1.7.6</minify-maven-plugin.version>
+        <libsass-maven-plugin.version>0.2.5-libsass_3.3.6</libsass-maven-plugin.version>
         <!-- <tomcat.version>7.0.70</tomcat.version> -->
-        <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
 
     <parent>
@@ -56,6 +57,11 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jms</artifactId>
         </dependency>
@@ -63,12 +69,12 @@
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-broker</artifactId>
         </dependency>
-
 <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -76,7 +82,6 @@
             <scope>provided</scope>
         </dependency>
 -->
-
         <!-- Provided (for embedded war support) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -102,11 +107,6 @@
             <artifactId>jquery</artifactId>
             <version>2.1.1</version>
         </dependency>
-
-        <dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-		</dependency>
 
         <!-- Test -->
         <dependency>
@@ -136,11 +136,6 @@
         <plugins>
 
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
@@ -151,6 +146,54 @@
                         <!-- <arg>-verbose</arg> -->
                         <arg>-Xlint:all</arg>
                     </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.samaxes.maven</groupId>
+                <artifactId>minify-maven-plugin</artifactId>
+                <version>${minify-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-minify</id>
+                        <goals>
+                            <goal>minify</goal>
+                        </goals>
+                        <configuration>
+                            <webappSourceDir>${project.basedir}/src/main/resources</webappSourceDir>
+                            <webappTargetDir>${project.build.directory}/classes</webappTargetDir>
+                            <jsSourceDir>static/js</jsSourceDir>
+                            <jsSourceIncludes>
+                                <jsSourceInclude>**.js</jsSourceInclude>
+                            </jsSourceIncludes>
+                            <nosuffix>true</nosuffix>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.warmuuh</groupId>
+                <artifactId>libsass-maven-plugin</artifactId>
+                <version>${libsass-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <inputPath>${basedir}/src/main/sass/</inputPath>
+                    <outputPath>${project.build.directory}/classes/static/css</outputPath>
+                    <outputStyle>compressed</outputStyle>
+                    <generateSourceMap>false</generateSourceMap>
                 </configuration>
             </plugin>
 

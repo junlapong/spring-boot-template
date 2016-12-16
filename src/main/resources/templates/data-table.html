@@ -3,25 +3,53 @@
       xmlns:dt="http://www.thymeleaf.org/dandelion/datatables">
 <head>
     <title>Data Table</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="../static/css/core.css"
+          th:href="@{css/core.css}"
+          rel="stylesheet" media="screen" />
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen" />
 </head>
 <body>
-<div class="span12">
-    <table id="myTableId" dt:table="true">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>LastName</th>
-                <th>FirstName</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="person : ${persons}">
-                <td th:text="${person?.id}">1</td>
-                <td th:text="${person?.lastName}">Doe</td>
-                <td th:text="${person?.firstName}">John</td>
-            </tr>
-        </tbody>
-    </table>
+<!-- Header -->
+<div th:replace="fragments/header :: header"></div>
+<div class="container">
+    <div class="hero-unit">
+        <h1>Data Table</h1>
+        <div class="span12">
+            <table id="myTableId" dt:table="true">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>LastName</th>
+                        <th>FirstName</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="person : ${persons}">
+                        <td th:text="${person?.id}">1</td>
+                        <td th:text="${person?.lastName}">Doe</td>
+                        <td th:text="${person?.firstName}">John</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+
+    <footer>
+        <div th:replace="fragments/footer :: footer">&copy; Templates Footer</div>
+    </footer>
 </div>
+
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+        th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+<script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
+        th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+
 </body>
 </html>
