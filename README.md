@@ -21,7 +21,7 @@ keytool -list -v -keystore keystore.p12 -storetype pkcs12
 ### create keystore (SAN)
 ```
 # Java 1.7+
-keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore-san.p12 -validity 3650 -dname "CN=localhost, OU=IT, O=COMPANY, L=CITY, ST=BKK, C=TH" -ext SAN=dns:domain.name,ip:127.0.01
+keytool -genkey -alias tomcat -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore-san.p12 -validity 3650 -dname "CN=localhost, OU=IT, O=COMPANY, L=CITY, ST=BKK, C=TH" -ext "SAN=dns:domain.name,ip:127.0.0.1,ip:192.168.1.14,ip:172.19.26.128"
 
 keytool -list -v -keystore keystore-san.p12 -storetype pkcs12
 ```

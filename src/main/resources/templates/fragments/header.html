@@ -22,9 +22,9 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#" th:href="@{/test}">Test</a></li>
-                <li><a href="#" th:href="@{/data-table}">Table</a></li>
-                <li><a href="#" th:href="@{/device}">Device</a></li>
+                <li th:classappend="${currentPage == 'test'} ? 'active'"><a href="#" th:href="@{/test}">Test</a></li>
+                <li th:classappend="${currentPage == 'table'} ? 'active'"><a href="#" th:href="@{/data-table}">Table</a></li>
+                <li th:classappend="${currentPage == 'device'} ? 'active'"><a href="#" th:href="@{/device}">Device</a></li>
                 <li><a href="#" th:href="@{/jms?payload=Welcome}">JMS</a></li>
                 <li><a href="#" th:href="@{/properties}">Props</a></li>
             </ul>
