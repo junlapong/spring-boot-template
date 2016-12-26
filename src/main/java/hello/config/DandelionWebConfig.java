@@ -1,16 +1,14 @@
 package hello.config;
 
-import com.github.dandelion.core.web.DandelionFilter;
-import com.github.dandelion.core.web.DandelionServlet;
-import com.github.dandelion.datatables.thymeleaf.dialect.DataTablesDialect;
-import com.github.dandelion.thymeleaf.dialect.DandelionDialect;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+
+import com.github.dandelion.core.web.DandelionFilter;
+import com.github.dandelion.core.web.DandelionServlet;
+import com.github.dandelion.datatables.thymeleaf.dialect.DataTablesDialect;
+import com.github.dandelion.thymeleaf.dialect.DandelionDialect;
 
 @Configuration
 public class DandelionWebConfig {

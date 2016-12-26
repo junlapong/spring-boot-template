@@ -25,6 +25,7 @@ public class JMSController {
     @RequestMapping(value = "/jms", method = RequestMethod.GET)
     public String jmsHome(@RequestParam(value = "payload", required = false, defaultValue = "Hello World!") String payload, Model model) {
         jmsSend.sendMsg(payload);
+        logger.debug("Send essage");
         return "index";
     }
 }

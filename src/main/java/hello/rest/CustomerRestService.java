@@ -38,7 +38,7 @@ public class CustomerRestService {
 
     @RequestMapping(value = "/rest/customer", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity saveCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer) {
         logger.info("First Name: " + customer.getFirstName() + ", Last Name: " + customer.getLastName());
         customerRepo.save(customer);
         return new ResponseEntity(customer.getId(), HttpStatus.OK);
@@ -47,7 +47,7 @@ public class CustomerRestService {
 
     @RequestMapping(value = "/rest/time", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity serverTime() {
+    public ResponseEntity<Customer> serverTime() {
         return new ResponseEntity("ServerTime : " + new Date(), HttpStatus.OK);
     }
 

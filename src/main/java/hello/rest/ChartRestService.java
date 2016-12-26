@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ChartRestService {
 
     @RequestMapping(value = "/rest/pie-data", method = RequestMethod.GET)
-    public List getPieData() {
+    public List<Object> getPieData() {
         List<Object> pieData = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             List<Object> dataElement = new ArrayList<>();
