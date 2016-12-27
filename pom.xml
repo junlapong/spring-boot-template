@@ -7,7 +7,7 @@
     <artifactId>spring-boot-template</artifactId>
     <name>Spring Boot Template</name>
     <version>0.1</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -154,7 +154,7 @@
             <plugin>
                 <groupId>com.samaxes.maven</groupId>
                 <artifactId>minify-maven-plugin</artifactId>
-                <version>${minify-maven-plugin.version}</version>
+                <version>1.7.6</version>
                 <executions>
                     <execution>
                         <id>default-minify</id>
@@ -164,38 +164,24 @@
                         <configuration>
                             <webappSourceDir>${project.basedir}/src/main/resources</webappSourceDir>
                             <webappTargetDir>${project.build.directory}/classes</webappTargetDir>
+                            <!-- <cssTargetDir>static/css/minified</cssTargetDir> -->
+                            <!-- <jsTargetDir>static/js/minified</jsTargetDir> -->
+                            <charset>utf-8</charset>
+                            <jsEngine>CLOSURE</jsEngine>
+                            <skipMerge>true</skipMerge>
+                            <nosuffix>true</nosuffix>
+                            <cssSourceDir>static/css</cssSourceDir>
+                            <cssSourceIncludes>
+                                <cssSourceInclude>**.css</cssSourceInclude>
+                            </cssSourceIncludes>
                             <jsSourceDir>static/js</jsSourceDir>
                             <jsSourceIncludes>
                                 <jsSourceInclude>**.js</jsSourceInclude>
                             </jsSourceIncludes>
-                            <nosuffix>true</nosuffix>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>com.github.warmuuh</groupId>
-                <artifactId>libsass-maven-plugin</artifactId>
-                <version>${libsass-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <inputPath>${basedir}/src/main/sass/</inputPath>
-                    <outputPath>${project.build.directory}/classes/static/css</outputPath>
-                    <outputStyle>compressed</outputStyle>
-                    <generateSourceMap>false</generateSourceMap>
-                </configuration>
-            </plugin>
-
         </plugins>
-
     </build>
-
 </project>
