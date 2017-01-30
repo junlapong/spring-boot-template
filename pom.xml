@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.3.RELEASE</version>
+        <version>RELEASE</version>
     </parent>
 
     <properties>
@@ -187,7 +187,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <inputPath>${basedir}/src/main/sass/</inputPath>
+                    <inputPath>${basedir}/src/main/resources/sass/</inputPath>
                     <outputPath>${project.build.directory}/classes/static/css</outputPath>
                     <outputStyle>compressed</outputStyle>
                     <generateSourceMap>false</generateSourceMap>
