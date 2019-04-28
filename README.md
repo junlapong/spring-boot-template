@@ -8,7 +8,7 @@ Spring Boot Template
 - [Spring Mobile Device Module](http://docs.spring.io/spring-mobile/docs/current/reference/html/device.html)
 
 ## Test
- - HTTP http://localhost:8080/
+ - HTTP http://localhost:8080/app
  - HTTPS https://localhost:8443/
 
 ### create keystore
