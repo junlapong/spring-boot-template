@@ -12,14 +12,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.20.RELEASE</version>
+        <version>1.5.22.RELEASE</version>
     </parent>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <minify-maven-plugin.version>1.7.6</minify-maven-plugin.version>
-        <libsass-maven-plugin.version>0.2.5-libsass_3.3.6</libsass-maven-plugin.version>
+        <libsass-maven-plugin.version>0.3.1</libsass-maven-plugin.version>
         <!-- <tomcat.version>7.0.70</tomcat.version> -->
     </properties>
 
@@ -192,7 +192,7 @@
             </plugin>
 
             <plugin>
-                <groupId>com.github.warmuuh</groupId>
+                <groupId>com.gitlab.haynes</groupId>
                 <artifactId>libsass-maven-plugin</artifactId>
                 <version>${libsass-maven-plugin.version}</version>
                 <executions>
